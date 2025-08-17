@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ring Lock Scaffold Material Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ring Lock Scaffold Material Generator</h1>
+            <p>Enter your scaffold dimensions to generate a material list.</p>
+        </header>
+
+        <div class="form-container">
+            <!-- All inputs are now part of the Facade Scaffold type -->
+            <div id="facade-inputs" class="form-container">
+                <div class="input-group">
+                    <label for="length">Scaffold Length (ft)</label>
+                    <input type="number" id="length" placeholder="e.g., 50">
+                </div>
+                <div class="input-group">
+                    <label for="width">Scaffold Width (ft)</label>
+                    <input type="number" id="width" placeholder="e.g., 5 or 7">
+                </div>
+                <div class="input-group">
+                    <label for="height">Deck Height (ft)</label>
+                    <input type="number" id="height" placeholder="e.g., 30">
+                </div>
+                <div class="input-group">
+                    <label for="working_levels"># of Working Levels</label>
+                    <input type="number" id="working_levels" placeholder="e.g., 2">
+                </div>
+                <!-- NEW LADDER CHECKBOX -->
+                <div class="input-group full-width checkbox-group">
+                    <input type="checkbox" id="include_ladder">
+                    <label for="include_ladder">Include Ladder Access?</label>
+                </div>
+            </div>
+            
+            <button id="generateBtn" class="full-width">Generate List</button>
+        </div>
+
+        <div id="loader" class="loader" style="display:none;"></div>
+        <div id="error-message" class="error" style="display:none;"></div>
+
+        <div id="results-container" class="results-container" style="display:none;">
+            <h2>Generated Material List</h2>
+            <div id="summary"></div>
+            <table id="results-table">
+                <thead><tr><th>Component</th><th>Quantity</th></tr></thead>
+                <tbody></tbody>
+            </table>
+            <div class="actions">
+                <button id="printBtn">Print</button>
+                <button id="savePdfBtn">Save as PDF</button>
+                <button id="emailBtn">Share via Email</button>
+                <button id="whatsappBtn">Share via WhatsApp</button>
+            </div>
+            <p class="disclaimer">NOTE: This is a preliminary estimate. Always consult a qualified person for final design and safety compliance.</p>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body>
+</html>
