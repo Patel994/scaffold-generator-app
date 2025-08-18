@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ring Lock Scaffold Material Generator</title>
+    
+    <!-- THIS IS THE CRITICAL LINE THAT MUST BE CORRECT -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <!-- External libraries for PDF generation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
 </head>
+<body>
+    <!-- ... the rest of your index.html body remains exactly the same ... -->
+
+    <!-- The 'defer' attribute ensures this script runs only after the HTML page is fully loaded -->
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body>
+</html>
 <body>
     <div class="container">
         <header>
@@ -66,4 +79,5 @@
     
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
 </body>
+
 </html>
